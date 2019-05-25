@@ -87,3 +87,9 @@ hr {
 .how-it-works-container {
     margin-top: 100px;
 }
+
+.menu-container {
+    display: flex;
+    margin-top: 90px;
+    justify-content: center;
+}

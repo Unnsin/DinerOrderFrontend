@@ -1,0 +1,64 @@
+.product-card {
+    box-shadow: 
+        0 6px 10px 0 rgba(30, 41, 64, 0.2), 
+        0 3px 4px 0 rgba(60, 71, 94, 0.05),
+        0 1px 3px 0 rgba(144, 202, 249, 0.12);
+    width: 420px;
+    height: 500px;
+    margin-bottom: 10px;
+}
+
+.product-card-img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 400px;
+    height: 400px;
+}
+
+.product-list-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.product-card-name {
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-card-weight {
+    font-style: italic;
+    color: #8c8d8e;
+    text-align: center;
+    font-size: 12px;
+}
+
+.product-card-price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.product-card-price span {
+    font-size: 12px;
+}
+
+.price-and-add-container{
+    display: flex;
+    margin: 0 5px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.product-add-to-busket-button {
+    background-color: white;
+    border: 1px solid black;
+    height: 35px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.product-add-to-busket-button:hover {
+    background-color: #449d44;
+    border-color: #419641;
+    color: white
+}
