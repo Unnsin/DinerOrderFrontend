@@ -22,3 +22,12 @@
     display: flex;
     justify-content: center;
 }
+
+.error-message {
+    color: red;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column; 
+} 

@@ -17,10 +17,12 @@ class MainContainer extends Component {
                         <div> Доставка обедов </div>
                     </div>
                 </div>
-                <div className="title">
-                    <hr style={{ width: '10%' }}  />
-                        КАК ЭТО РАБОТАЕТ?
-                    <hr style={{ width: '12%' }} />
+                <div className="how-it-works-container">
+                    <div className="main-container-title">
+                        <hr style={{ width: '10%' }}  />
+                            КАК ЭТО РАБОТАЕТ?
+                        <hr style={{ width: '12%' }} />
+                    </div>
                 </div>
                 <div className="card-layout">
                     <div className="card-container">
