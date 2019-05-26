@@ -1,4 +1,5 @@
 import { LOGIN_TYPES, REGISTER_TYPES } from '../actions/authAction' 
+import { IS_AUTH_TYPES } from '../actions/appAction'
 
 const initialState = {
     loading: false,
@@ -6,7 +7,11 @@ const initialState = {
     isAuth: false,
     error: '',
     token: '',
-    errorType: ''
+    errorType: '',
+    isAuthObj: {
+        loading: false,
+        loaded: false,
+    }
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -63,6 +68,39 @@ export default (state = initialState, { type, payload }) => {
                 isAuth: false,
                 error: payload.message,
                 errorType: 'register'
+            }
+        }
+        case IS_AUTH_TYPES.START: {
+            return {
+                ...state,
+                isAuthObj: {
+                    ...state.isAuth,
+                    loading: true,
+                    loaded: false,
+                }
+            }
+        }
+        case IS_AUTH_TYPES.SUCCESS: {
+            return {
+                ...state,
+                isAuthObj: {
+                    ...state.isAuth,
+                    loading: false,
+                    loaded: true,
+                },
+                token: payload,
+                isAuth: true,
+            }
+        }
+        case IS_AUTH_TYPES.ERROR: {
+            return {
+                ...state,
+                isAuthObj: {
+                    ...state.isAuth,
+                    loading: false,
+                    loaded: false,
+                },
+                isAuth: false,
             }
         }
         default: 

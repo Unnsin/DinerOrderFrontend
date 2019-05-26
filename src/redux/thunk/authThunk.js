@@ -1,6 +1,8 @@
 import { push } from 'react-router-redux';
 import { LOGIN_ACTIONS, REGISTER_ACTIONS } from '../actions/authAction'
 import { apiHost, loginUrl, registerUrl } from '../../constans/api'
+import apiErrorCatch from '../../utils/apiErrorCatch'
+import localStorageApiCatch from '../../utils/localStorageApiCatch'
 
 export const login = (email, password) => {
     return (dispatch) => {
@@ -15,15 +17,10 @@ export const login = (email, password) => {
                 password,
             })
         })
-            .then(res => {
-                if(res.ok) {
-                    return res
-                } else {
-                    throw { message: 'Login error' }
-                }
-            })
+            .then(apiErrorCatch('Login error'))
             .then(res => res.json())
-            .then(res => { localStorage.setItem('token', res.token); return res }) 
+            .then(localStorageApiCatch('token'))
+            .then(localStorageApiCatch('userId')) 
             .then(res => dispatch(LOGIN_ACTIONS.success(res)))
             .then(() => dispatch(push('/')))
             .catch(err => dispatch(LOGIN_ACTIONS.error(err)))
@@ -40,15 +37,9 @@ export const register = (data) => {
             },
             body: JSON.stringify(data)
         })
-            .then(res => {
-                if(res.ok) {
-                    return res
-                } else {
-                    throw { message: 'Register error' }
-                }
-            })
+            .then(apiErrorCatch('Register error'))
             .then(res => res.json())
-            .then(res => { localStorage.setItem('token', res.token); return res })
+            .then(localStorageApiCatch('token'))
             .then(res => dispatch(REGISTER_ACTIONS.success(res)))
             .then(() => dispatch(push('/')))
             .catch(err => dispatch(REGISTER_ACTIONS.error(err)))

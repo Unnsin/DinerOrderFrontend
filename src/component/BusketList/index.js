@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { getProducts } from '../../redux/thunk/productThunk'
-import { addToBusket } from '../../redux/thunk/busketThunk'
 import './style.css'
 
 class ProductList extends Component {
-
-    componentDidMount() {
-        this.props.getProducts()
-    }
-
-    onClick = (id) => () => {
-        const userId = localStorage.getItem('userId')
-        this.props.addToBusket(userId, id)
-    }
 
     render() {
         const { products } = this.props
@@ -27,7 +15,7 @@ class ProductList extends Component {
                         <div className="product-card-weight">{product.weight} г.</div>
                         <div className="price-and-add-container">
                             <div className="product-card-price">{product.price}<span>$</span></div>
-                            <button className="product-add-to-busket-button" onClick={this.onClick(product._id)}>Заказать</button>
+                            <button className="product-add-to-busket-button">Удалить</button>
                         </div>
                     </div>
                 )) }
@@ -37,15 +25,9 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    products: state.product.products,
-    loading: state.product.getProducts.loading,
-    error: state.product.getProducts.error,
-    loaded: state.product.getProducts.loaded,
+    products: state.busket.busket.products,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    getProducts: bindActionCreators(getProducts, dispatch),
-    addToBusket: bindActionCreators(addToBusket, dispatch),
-})
+const mapDispatchToProps = (dispatch) => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

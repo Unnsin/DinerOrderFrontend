@@ -17,6 +17,11 @@ h3 {
     text-decoration: none;
 }
 
+.auth-label {
+    margin-top: 9px;
+    margin-left: 100px;
+}
+
 .wrapper{
     margin-top: 12px;
     margin-right: 20px;
