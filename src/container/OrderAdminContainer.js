@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import OrderList from '../component/OrderList/index'
 
 class OrderAdminContainer extends Component {
     render() {
         return (
-            <div>
-                <span> Order Admin Container </span>
+            <div className="order-admin-container" >
+                <OrderList />
             </div>
         )
     }

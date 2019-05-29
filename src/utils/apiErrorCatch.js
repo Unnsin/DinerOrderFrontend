@@ -1,6 +1,6 @@
 export default (err) => (res) => {
     if(res.ok) {
-        return res
+        return res.json()
     } else {
         return { message: err }
     }

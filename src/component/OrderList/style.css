@@ -1,0 +1,70 @@
+.order-list-container {
+    margin-top: 20px;
+}
+
+.title-contaner {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.order-card {
+    width: 420px;
+    box-shadow: 
+        0 6px 10px 0 rgba(30, 41, 64, 0.2), 
+        0 3px 4px 0 rgba(60, 71, 94, 0.05),
+        0 1px 3px 0 rgba(144, 202, 249, 0.12);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.order-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-weight {
+    font-style: italic;
+    color: #8c8d8e;
+    text-align: center;
+    font-size: 12px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-container button {
+    margin: 5px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.addres-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.total-price-label {
+    margin: auto 0;
+}
+
+.total-price-value {
+    font-weight: bold;
+    font-size: 24px
+}
+
+.total-price-value span {
+    font-size: 18px;
+}
+
+.label {
+    margin: auto 0;
+}

@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import { 
     CREATE_BUSKET_ACTIONS, 
     ADD_TO_BUSKET_ACTIONS, 
@@ -26,7 +27,6 @@ export const createBusket = (userId) => {
             })
         })
             .then(apiErrorCatch('Create busket error'))
-            .then(res => res.json())
             .then(res => CREATE_BUSKET_ACTIONS.success(res))
             .catch(err => CREATE_BUSKET_ACTIONS.error(err))
     }
@@ -44,7 +44,6 @@ export const getBusketById = (userId) => {
                 }
             })
                 .then(apiErrorCatch('Get busket by id error'))
-                .then(res => res.json())
                 .then(res => dispatch(GET_BUSKET_ACTIONS.success(res)))
                 .catch(err => dispatch(GET_BUSKET_ACTIONS.error(err)))
 
@@ -65,8 +64,8 @@ export const addToBusket = (userId, productId) => {
             })
         })
             .then(apiErrorCatch('Add to busket error'))
-            .then(res => res.json())
             .then(res => dispatch(ADD_TO_BUSKET_ACTIONS.success(res)))
+            .then(() => dispatch(push('/busket')))
             .catch(err => dispatch(ADD_TO_BUSKET_ACTIONS.error(err)))
     }
 }
@@ -85,7 +84,6 @@ export const removeFromBusket = (userId, productId) => {
             })
         })
             .then(apiErrorCatch('Remove from busket error'))
-            .then(res => res.json())
             .then(res => dispatch(REMOVE_FROM_BUSKET_ACTIONS.success(res)))
             .catch(err => dispatch(REMOVE_FROM_BUSKET_ACTIONS.error(err)))
     }
