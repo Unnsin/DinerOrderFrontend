@@ -1,26 +1,6 @@
-export const IS_AUTH_TYPES = {
-    START: 'App| Is auth',
-    SUCCESS: 'App| Is auth success',
-    ERROR: 'App| Is auth error',
-}
+import createObjectTypes from '../../utils/createObjectTypes'
+import createObjectActions from '../../utils/createObjectActions'
 
-export const isAuth = (payload) => ({
-    type: IS_AUTH_TYPES.START,
-    payload,
-})
+export const IS_AUTH_TYPES = createObjectTypes('App', 'Is auth')
 
-export const isAuthSuccess = (payload) => ({
-    type: IS_AUTH_TYPES.SUCCESS,
-    payload,
-})
-
-export const isAuthError = (payload) => ({
-    type: IS_AUTH_TYPES.ERROR,
-    payload,
-})
-
-export const IS_AUTH_ACTIONS = {
-    start: isAuth,
-    success: isAuthSuccess,
-    error: isAuthError,
-}
+export const IS_AUTH_ACTIONS = createObjectActions(IS_AUTH_TYPES)

@@ -2,6 +2,7 @@ import {
     CREATE_ORDER_TYPES, 
     GET_ORDER_TYPES,
     DELIVERY_ORDER_TYPES,
+    DELETE_ORDER_TYPES,
 } from '../actions/orderAction'
 
 const initialState = {
@@ -16,6 +17,11 @@ const initialState = {
         error: '',  
     },
     deliveryOrder: {
+        loading: false,
+        loaded: false,
+        error: '',
+    },
+    deleteOrder: {
         loading: false,
         loaded: false,
         error: '',
@@ -115,6 +121,35 @@ export default (state = initialState, { type, payload }) => {
                     loading: false,
                     loaded: false,
                     error: payload.message,  
+                }
+            }
+        case DELETE_ORDER_TYPES.START:
+            return {
+                ...state,
+                deleteOrder: {
+                    ...state.deleteOrder,
+                    loading: true,
+                    loaded: false,
+                    error: ''
+                }
+            }
+        case DELETE_ORDER_TYPES.SUCCESS:
+            return {
+                ...state,
+                deleteOrder: {
+                    ...state.deleteOrder,
+                    loading: false,
+                    loaded: true,
+                }
+            }
+        case DELETE_ORDER_TYPES.ERROR: 
+            return {
+                ...state,
+                deleteOrder: {
+                    ...state.deleteOrder,
+                    loading: false,
+                    loaded: false,
+                    error: payload.message,
                 }
             }
         default: 

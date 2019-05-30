@@ -2,6 +2,8 @@ import {
     GET_PRODUCT_TYPES, 
     GET_PRODUCT_BY_ID_TYPES,
     CREATE_PRODUCT_TYPES,
+    UPLOAD_IMAGE_PRODUCT_TYPES,
+    DELETE_PRODUCT_TYPES,
 } from '../actions/productAction'
 
 const initialState = {
@@ -16,6 +18,16 @@ const initialState = {
         error: '',
     },
     getProductById: {
+        loading: false,
+        loaded: false,
+        error: '',
+    },
+    uploadImage: {
+        loading: false,
+        loaded: false,
+        error: '',
+    },
+    deleteProduct: {
         loading: false,
         loaded: false,
         error: '',
@@ -116,6 +128,62 @@ export default (state = initialState, { type, payload }) => {
                     loading: false,
                     loaded: false,
                     error: payload.message,
+                }
+            }
+        case UPLOAD_IMAGE_PRODUCT_TYPES.START:
+            return {
+                ...state,
+                uploadImage: {
+                    ...state.uploadImage,
+                    loading: true,
+                    loaded: false,
+                    error: '',
+                }
+            }
+        case UPLOAD_IMAGE_PRODUCT_TYPES.SUCCESS: 
+            return {
+                ...state,
+                uploadImage: {
+                    ...state.uploadImage,
+                    loading: false,
+                    loaded: true,
+                }
+            }
+        case UPLOAD_IMAGE_PRODUCT_TYPES.ERROR: 
+            return {
+                ...state,
+                uploadImage: {
+                    ...state.uploadImage,
+                    loading: false,
+                    loaded: false,
+                }
+            }
+        case DELETE_PRODUCT_TYPES.START:
+            return {
+                ...state,
+                deleteProduct: {
+                    ...state.deleteProduct,
+                    loading: true,
+                    loaded: false,
+                    error: ''
+                }
+            }
+        case DELETE_PRODUCT_TYPES.SUCCESS:
+            return {
+                ...state,
+                deleteProduct: {
+                    ...state.deleteProduct,
+                    loading: false,
+                    loaded: true,
+                }
+            }
+        case DELETE_PRODUCT_TYPES.ERROR: 
+            return {
+                ...state,
+                deleteProduct: {
+                    ...state.deleteProduct,
+                    loading: false,
+                    loaded: false,
                 }
             }
         default: 

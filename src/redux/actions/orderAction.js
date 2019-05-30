@@ -1,81 +1,12 @@
-export const CREATE_ORDER_TYPES = {
-    START: 'Order| Create order start',
-    SUCCESS: 'Order| Create order success',
-    ERROR: 'Order| Create order error',
-}
+import createObjectTypes from '../../utils/createObjectTypes'
+import createObjectActions from '../../utils/createObjectActions'
 
-export const GET_ORDER_TYPES = {
-    START: 'Order| Get order start',
-    SUCCESS: 'Order| Get order success',
-    ERROR: 'Order| Get order error',
-}
+export const CREATE_ORDER_TYPES = createObjectTypes('Order', 'Create order')
+export const GET_ORDER_TYPES =  createObjectTypes('Order', 'Get order')
+export const DELIVERY_ORDER_TYPES =  createObjectTypes('Order', 'Delivery order')
+export const DELETE_ORDER_TYPES = createObjectTypes('Order', 'Delete order')
 
-export const DELIVERY_ORDER_TYPES = {
-    START: 'Order| Delivery order start',
-    SUCCESS: 'Order| Delivery order success',
-    ERROR: 'Order| Delivery order error',
-}
-
-export const deliveryOrderStart = (payload) => ({
-    type: DELIVERY_ORDER_TYPES.START,
-    payload
-})
-
-export const deliveryOrderSuccess = (payload) => ({
-    type: DELIVERY_ORDER_TYPES.SUCCESS,
-    payload,
-})
-
-export const deliveryOrderError = (payload) => ({
-    type: DELIVERY_ORDER_TYPES.ERROR,
-    payload,
-})
-
-export const DELIVERY_ORDER_ACTIONS = {
-    start: deliveryOrderStart,
-    success: deliveryOrderSuccess,
-    error: deliveryOrderError,
-}
-
-export const getOrderStart = (payload) => ({
-    type: GET_ORDER_TYPES.START,
-    payload
-})
-
-export const getOrderSuccess = (payload) => ({
-    type: GET_ORDER_TYPES.SUCCESS,
-    payload
-}) 
-
-export const getOrderError = (payload) => ({
-    type: GET_ORDER_TYPES.ERROR,
-    payload,
-})
-
-export const GET_ORDER_ACTIONS = {
-    start: getOrderStart,
-    success: getOrderSuccess,
-    error: getOrderError,
-} 
-
-export const createOrderStart = (payload) => ({
-    type: CREATE_ORDER_TYPES.START,
-    payload,
-})
-
-export const createOrderSuccess = (payload) => ({
-    type: CREATE_ORDER_TYPES.SUCCESS,
-    payload,
-})
-
-export const createOrderError = (payload) => ({
-    type: CREATE_ORDER_TYPES.ERROR,
-    payload,
-})
-
-export const CREATE_ORDER_ACTIONS = {
-    start: createOrderStart,
-    success: createOrderSuccess,
-    error: createOrderError,
-}
-
+export const DELIVERY_ORDER_ACTIONS = createObjectActions(DELIVERY_ORDER_TYPES)
+export const GET_ORDER_ACTIONS = createObjectActions(GET_ORDER_TYPES)
+export const CREATE_ORDER_ACTIONS = createObjectActions(CREATE_ORDER_TYPES)
+export const DELETE_ORDER_ACTIONS = createObjectActions(DELETE_ORDER_TYPES)

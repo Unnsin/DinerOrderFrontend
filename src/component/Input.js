@@ -3,10 +3,10 @@ import './InputStyle.css'
 
 class Input extends Component {
     onChange = (e) => {
-        const { onChange } = this.props
+        const { onChange, type } = this.props
         onChange({ 
             name: e.target.name, 
-            value: e.target.value
+            value: type !== "file" ? e.target.value : e.target.files
         })
     }
 

@@ -63,6 +63,7 @@ class Header extends Component {
                         {isAuth && (<button className="menu-item" onClick={this.historyPush("/busket")}>Корзина</button>)}
                         <button className="menu-item" onClick={this.historyPush("/personal-area")}>Личный Кабинет</button>
                         <button className="menu-item" onClick={this.historyPush("/order-admin")}>Администрирование</button>
+                        <button className="menu-item" onClick={this.historyPush('/product-form-container')}>Добавить продукт</button>
                         {isAuth && (<button className="menu-item" onClick={this.signOut}>Выйти</button>)}
                     </nav>
                 </div>

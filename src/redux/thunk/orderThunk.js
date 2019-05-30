@@ -3,6 +3,7 @@ import {
     CREATE_ORDER_ACTIONS, 
     GET_ORDER_ACTIONS,
     DELIVERY_ORDER_ACTIONS,
+    DELETE_ORDER_ACTIONS,
 } from '../actions/orderAction'
 import { orderUrl, apiHost } from '../../constans/api'
 import apiErrorCatch from '../../utils/apiErrorCatch'
@@ -41,5 +42,15 @@ export const delieryOrder = (id) => {
             .then(apiErrorCatch('Delivery order error'))
             .then(res => dispatch(DELIVERY_ORDER_ACTIONS.success(res.status)))
             .catch(err => dispatch(DELIVERY_ORDER_ACTIONS.error(err)))
+    }
+}
+
+export const deleteOrder = (id) => {
+    return dispatch => {
+        dispatch(DELETE_ORDER_ACTIONS.start())
+        fetch(`${apiHost}${orderUrl}/delete/${id}`)
+            .then(apiErrorCatch('Delete order error'))
+            .then(res => dispatch(DELETE_ORDER_ACTIONS.success(res)))
+            .catch(err => dispatch(DELETE_ORDER_ACTIONS.error(err)))
     }
 }

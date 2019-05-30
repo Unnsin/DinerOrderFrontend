@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
-import { getOrder, delieryOrder } from '../../redux/thunk/orderThunk'
+import { getOrder, delieryOrder, deleteOrder } from '../../redux/thunk/orderThunk'
 import './style.css'
 
 
@@ -12,6 +12,10 @@ class OrderList extends Component {
 
     deliveryOrderHof = (id) => () => {
         this.props.delieryOrder(id)
+    }
+
+    deleteOrderHof = (id) => () => {
+        this.props.deleteOrder(id)
     }
 
     render() {
@@ -52,7 +56,7 @@ class OrderList extends Component {
                             { item.status !== 'delivery' &&  
                                 <button className="button" onClick={this.deliveryOrderHof(item._id)}>Доставить заказ</button> 
                             }
-                            <button className="button">Отменить заказ</button>
+                            <button className="button" onClick={this.deleteOrderHof(item._id)}>Отменить заказ</button>
                         </div>
                     </div>
                 ))}
@@ -67,7 +71,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getOrder: bindActionCreators(getOrder, dispatch),
-    delieryOrder: bindActionCreators(delieryOrder, dispatch)
+    delieryOrder: bindActionCreators(delieryOrder, dispatch),
+    deleteOrder: bindActionCreators(deleteOrder, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderList)

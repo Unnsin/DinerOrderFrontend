@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getProducts } from '../../redux/thunk/productThunk'
+import { getProducts, deleteProduct } from '../../redux/thunk/productThunk'
 import { addToBusket } from '../../redux/thunk/busketThunk'
 import './style.css'
 
@@ -9,6 +9,11 @@ class ProductList extends Component {
 
     componentDidMount() {
         this.props.getProducts()
+    }
+
+    deleteProductHof = (id) => () => {
+        this.props.deleteProducts(id)
+        window.location.reload()
     }
 
     onClick = (id) => () => {
@@ -27,6 +32,7 @@ class ProductList extends Component {
                         <div className="product-card-weight">{product.weight} г.</div>
                         <div className="price-and-add-container">
                             <div className="product-card-price">{product.price}<span>$</span></div>
+                            <button className="product-remove-button" onClick={this.deleteProductHof(product._id)}>Удалить</button>
                             <button className="product-add-to-busket-button" onClick={this.onClick(product._id)}>Заказать</button>
                         </div>
                     </div>
@@ -46,6 +52,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     getProducts: bindActionCreators(getProducts, dispatch),
     addToBusket: bindActionCreators(addToBusket, dispatch),
+    deleteProducts: bindActionCreators(deleteProduct, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

@@ -6,6 +6,7 @@ import BusketContainer from './BusketContainer'
 import OrderAdminContainer from './OrderAdminContainer'
 import PersonalArea from './PersonalArea'
 import MenuContainer from './MenuContainer'
+import ProductFormContainer from './ProductFormContainer'
 import Header from '../component/Header/index'
 import Footer from '../component/Footer/index'
 import './appStyle.css'
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/order-admin" exact component={OrderAdminContainer} />
           <Route path="/personal-area" exact component={PersonalArea} />
           <Route path="/menu" exact component={MenuContainer} />
+          <Route path="/product-form-container" exact component={ProductFormContainer} />
         </div>
         <Footer />
       </div>
