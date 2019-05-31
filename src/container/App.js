@@ -4,7 +4,6 @@ import MainContainer from './MainContainer'
 import AuthContainer from './AuthContainer'
 import BusketContainer from './BusketContainer'
 import OrderAdminContainer from './OrderAdminContainer'
-import PersonalArea from './PersonalArea'
 import MenuContainer from './MenuContainer'
 import ProductFormContainer from './ProductFormContainer'
 import Header from '../component/Header/index'
@@ -22,7 +21,6 @@ class App extends Component {
           <Route path="/auth" exact component={AuthContainer} />
           <Route path="/busket" exact component={BusketContainer} />
           <Route path="/order-admin" exact component={OrderAdminContainer} />
-          <Route path="/personal-area" exact component={PersonalArea} />
           <Route path="/menu" exact component={MenuContainer} />
           <Route path="/product-form-container" exact component={ProductFormContainer} />
         </div>

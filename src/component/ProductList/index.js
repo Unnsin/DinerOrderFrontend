@@ -22,7 +22,7 @@ class ProductList extends Component {
     }
 
     render() {
-        const { products } = this.props
+        const { products, user, isAuth } = this.props
         return (
             <div className="product-list-container">
                 { products.map(product => (
@@ -32,7 +32,7 @@ class ProductList extends Component {
                         <div className="product-card-weight">{product.weight} г.</div>
                         <div className="price-and-add-container">
                             <div className="product-card-price">{product.price}<span>$</span></div>
-                            <button className="product-remove-button" onClick={this.deleteProductHof(product._id)}>Удалить</button>
+                            {isAuth && user.role == 2 && <button className="product-remove-button" onClick={this.deleteProductHof(product._id)}>Удалить</button>}
                             <button className="product-add-to-busket-button" onClick={this.onClick(product._id)}>Заказать</button>
                         </div>
                     </div>
@@ -47,6 +47,8 @@ const mapStateToProps = (state) => ({
     loading: state.product.getProducts.loading,
     error: state.product.getProducts.error,
     loaded: state.product.getProducts.loaded,
+    user: state.user.user,
+    isAuth: state.app.isAuth,
 })
 
 const mapDispatchToProps = (dispatch) => ({

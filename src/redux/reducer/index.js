@@ -4,6 +4,7 @@ import appReducer from './App'
 import productReducer from './Product'
 import busketReducer from './Busket'
 import orderReducer from './Order'
+import userReducer from './User'
 
 export default combineReducers({
   router: routerReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   product: productReducer,
   busket: busketReducer,
   order: orderReducer,
+  user: userReducer,
 });

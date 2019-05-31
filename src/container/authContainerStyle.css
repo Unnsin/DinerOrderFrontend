@@ -17,7 +17,7 @@ hr {
 }
 
 .space-between {
-    justify-content: space-around
+    justify-content: space-around !important;
 }
 
 .container {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { isAuthAction } from '../../redux/thunk/appThunk'
 import { getBusketById } from '../../redux/thunk/busketThunk'
+import { getUserObject } from '../../redux/thunk/userThunk'
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import './style.css'
@@ -19,6 +20,7 @@ class Header extends Component {
         this.props.isAuthAction()
         const userId = localStorage.getItem('userId')
         this.props.getBusketById(userId)
+        this.props.getUserObject(userId)
     }
 
     historyPush = (param) => () => {
@@ -34,7 +36,7 @@ class Header extends Component {
 
     render() {
         const { buttonState } = this.state
-        const { isAuth } = this.props
+        const { isAuth, user } = this.props
         return (
             <div className="header">
                 <Link  className="link" to="/">
@@ -61,9 +63,8 @@ class Header extends Component {
                         <button className="menu-item" onClick={this.historyPush("/auth")}>Автоизация</button>
                         <button className="menu-item" onClick={this.historyPush("/menu")}>Меню</button>
                         {isAuth && (<button className="menu-item" onClick={this.historyPush("/busket")}>Корзина</button>)}
-                        <button className="menu-item" onClick={this.historyPush("/personal-area")}>Личный Кабинет</button>
-                        <button className="menu-item" onClick={this.historyPush("/order-admin")}>Администрирование</button>
-                        <button className="menu-item" onClick={this.historyPush('/product-form-container')}>Добавить продукт</button>
+                        {isAuth && user.role == 2 && <button className="menu-item" onClick={this.historyPush("/order-admin")}>Администрирование</button>}
+                        {isAuth && user.role == 2 && <button className="menu-item" onClick={this.historyPush('/product-form-container')}>Добавить продукт</button>}
                         {isAuth && (<button className="menu-item" onClick={this.signOut}>Выйти</button>)}
                     </nav>
                 </div>
@@ -74,11 +75,13 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
     isAuth: state.app.isAuth,
+    user: state.user.user
 })
 
 const mapDispatchToProps = (dispatch) => ({
     isAuthAction: bindActionCreators(isAuthAction, dispatch),
     getBusketById: bindActionCreators(getBusketById, dispatch),
+    getUserObject: bindActionCreators(getUserObject, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
